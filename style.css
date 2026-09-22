@@ -1,0 +1,36 @@
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #FAF7F2;
+  color: #2D2B2A;
+  overflow-x: hidden;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.hero-gradient {
+  background: linear-gradient(180deg, rgba(35, 43, 27, 0.45) 0%, rgba(35, 43, 27, 0.85) 100%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(232, 235, 224, 0.7);
+}
+
+.glass-dark {
+  background: rgba(35, 43, 27, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(90, 110, 67, 0.3);
+}
+
+/* Hide scrollbar for category sliders */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

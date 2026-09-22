@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'Oliveraie Restaurant | Gastronomie Tunisienne & Méditerranéenne à Midoun, Djerba</title>
+  <meta name="description" content="L'Oliveraie Restaurant à Midoun, Djerba - Spécialités tunisiennes authentiques, fruits de mer frais, grillades et pâtes gastronomiques dans un cadre chaleureux et élégant.">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            olive: {
+              50: '#f6f7f2',
+              100: '#e8ebe0',
+              600: '#5a6e43',
+              700: '#465634',
+              800: '#38452b',
+              900: '#232b1b',
+            },
+            terracotta: {
+              500: '#c85a32',
+              600: '#b04723',
+              700: '#8c3315',
+            },
+            warmbg: '#FAF7F2',
+            sand: '#EFEBE4',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="relative antialiased selection:bg-olive-600 selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-olive-900 text-amber-100/90 text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex justify-center items-center gap-3 border-b border-olive-800">
+    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-amber-400"></i> Ouvert 7j/7 : 12h30 – 23h00</span>
+    <span class="hidden md:inline">•</span>
+    <span class="hidden md:flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-400"></i> Midoun, Djerba (en face de Soquagen)</span>
+    <span class="hidden md:inline">•</span>
+    <span class="flex items-center gap-1"><i data-lucide="phone" class="w-3.5 h-3.5 text-amber-400"></i> +216 27 517 646</span>
+  </div>
+
+  <!-- Main Sticky Header -->
+  <header class="sticky top-0 z-40 bg-warmbg/95 backdrop-blur-md border-b border-stone-200 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo Brand -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-full bg-olive-900 flex items-center justify-center text-amber-300 shadow-md group-hover:scale-105 transition-transform">
+          <i data-lucide="utensils" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="block font-serif text-2xl font-bold tracking-tight text-olive-900">L'Oliveraie</span>
+          <span class="block text-[10px] uppercase tracking-widest text-terracotta-600 font-semibold">Restaurant • Midoun</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-stone-700">
+        <a href="#about" class="hover:text-olive-700 transition-colors">À Propos</a>
+        <a href="#menu" class="hover:text-olive-700 transition-colors">Notre Carte</a>
+        <a href="#gallery" class="hover:text-olive-700 transition-colors">Galerie Plats</a>
+        <a href="#services" class="hover:text-olive-700 transition-colors">Services</a>
+        <a href="#location" class="hover:text-olive-700 transition-colors">Accès & Contact</a>
+      </nav>
+
+      <!-- Action Buttons & Rating -->
+      <div class="hidden sm:flex items-center gap-4">
+        <a href="https://www.google.com/maps/dir/?api=1&destination=L%27Oliveraie+Restaurant%2C+RX5R%2B65R%2C+en+face+de+Soquagen%2C+Midoun%2C+Djerba+Midun+4116%2C+Tunisia" target="_blank" rel="noopener" class="flex items-center gap-1.5 bg-amber-50 text-amber-900 border border-amber-200 px-3 py-1.5 rounded-full text-xs font-semibold hover:bg-amber-100 transition">
+          <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500 text-amber-500"></i>
+          <span>4.8 / 5</span>
+          <span class="text-stone-400 font-normal">(52 avis)</span>
+        </a>
+
+        <button onclick="openModal('reservation-modal')" class="bg-olive-700 hover:bg-olive-800 text-white px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold shadow-sm transition hover:shadow-md flex items-center gap-2">
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+          Réserver une table
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="lg:hidden p-2 text-olive-900 hover:bg-stone-200/60 rounded-lg">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Nav -->
+    <div id="mobile-drawer" class="hidden lg:hidden bg-warmbg border-b border-stone-200 px-6 py-6 space-y-4">
+      <a href="#about" class="block font-medium text-stone-800 hover:text-olive-700" onclick="toggleMobileNav()">À Propos</a>
+      <a href="#menu" class="block font-medium text-stone-800 hover:text-olive-700" onclick="toggleMobileNav()">Notre Carte</a>
+      <a href="#gallery" class="block font-medium text-stone-800 hover:text-olive-700" onclick="toggleMobileNav()">Galerie Plats</a>
+      <a href="#services" class="block font-medium text-stone-800 hover:text-olive-700" onclick="toggleMobileNav()">Services</a>
+      <a href="#location" class="block font-medium text-stone-800 hover:text-olive-700" onclick="toggleMobileNav()">Accès & Contact</a>
+      <div class="pt-4 border-t border-stone-200 flex flex-col gap-3">
+        <button onclick="openModal('reservation-modal'); toggleMobileNav();" class="w-full bg-olive-700 text-white py-3 rounded-xl font-medium text-center text-sm shadow">
+          Réserver une table
+        </button>
+        <button onclick="toggleDevModal()" class="w-full bg-stone-200 text-stone-800 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2">
+          <i data-lucide="folder-archive" class="w-4 h-4"></i> Télécharger Code (L-Oliveraie/)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="relative min-h-[85vh] flex items-center justify-center text-white overflow-hidden bg-olive-900">
+    <!-- Background Artwork / SVG Visual Render -->
+    <div class="absolute inset-0 z-0">
+      <svg class="w-full h-full object-cover opacity-35" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hero-bg-grad" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#465634" />
+            <stop offset="100%" stop-color="#181f13" />
+          </radialGradient>
+        </defs>
+        <rect width="1200" height="800" fill="url(#hero-bg-grad)"/>
+        <!-- Decorative Botanical Patterns -->
+        <g stroke="#ffffff" stroke-opacity="0.08" stroke-width="2" fill="none">
+          <circle cx="200" cy="200" r="180" />
+          <circle cx="1000" cy="600" r="250" />
+          <path d="M 0,400 Q 300,300 600,400 T 1200,400" />
+          <path d="M 0,450 Q 300,350 600,450 T 1200,450" />
+        </g>
+      </svg>
+      <div class="absolute inset-0 hero-gradient"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 text-center py-20">
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-xs sm:text-sm font-medium tracking-wide text-amber-200 mb-6">
+        <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+        <span>Authenticité & Délices Méditerranéens à Djerba</span>
+      </div>
+
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-amber-50 mb-6 leading-tight">
+        L'Art de la Cuisine Tunisienne & Gourmet
+      </h1>
+
+      <p class="text-stone-200 text-base sm:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-10">
+        Bienvenue à <strong class="text-amber-300 font-semibold">L'Oliveraie Restaurant</strong>. Une immersion culinaire unique entre traditions djerbiennes, poissons frais grillés, pâtes savoureuses et viandes tendres au cœur de Midoun.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#menu" class="w-full sm:w-auto bg-terracotta-600 hover:bg-terracotta-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+          <i data-lucide="book-open" class="w-5 h-5"></i>
+          Consulter Notre Carte
+        </a>
+        <a href="#location" class="w-full sm:w-auto bg-white/15 hover:bg-white/25 text-white backdrop-blur-md font-semibold px-8 py-4 rounded-full border border-white/30 transition-all flex items-center justify-center gap-2">
+          <i data-lucide="navigation" class="w-5 h-5"></i>
+          S'y Rendre (Google Maps)
+        </a>
+      </div>
+
+      <!-- Quick Info Bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-16 pt-8 border-t border-white/15 text-left text-xs sm:text-sm text-stone-300">
+        <div class="flex items-center gap-3">
+          <div class="p-2.5 rounded-xl bg-white/10 text-amber-300"><i data-lucide="check-circle" class="w-5 h-5"></i></div>
+          <div>
+            <div class="font-bold text-white">100% Halal</div>
+            <div class="text-stone-400 text-xs">Produits frais certifiés</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="p-2.5 rounded-xl bg-white/10 text-amber-300"><i data-lucide="coins" class="w-5 h-5"></i></div>
+          <div>
+            <div class="font-bold text-white">20 – 30 TND</div>
+            <div class="text-stone-400 text-xs">Prix accessibles</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="p-2.5 rounded-xl bg-white/10 text-amber-300"><i data-lucide="parking-circle" class="w-5 h-5"></i></div>
+          <div>
+            <div class="font-bold text-white">Parking Gratuit</div>
+            <div class="text-stone-400 text-xs">Emplacements faciles</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="p-2.5 rounded-xl bg-white/10 text-amber-300"><i data-lucide="heart-handshake" class="w-5 h-5"></i></div>
+          <div>
+            <div class="font-bold text-white">Cadre Chaleureux</div>
+            <div class="text-stone-400 text-xs">Agréable & Cosy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-20 bg-warmbg border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Text Details -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 text-terracotta-600 uppercase tracking-widest text-xs font-bold">
+            <i data-lucide="award" class="w-4 h-4"></i> L'Expérience L'Oliveraie
+          </div>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-olive-900 leading-snug">
+            Une Table Chaleureuse au Cœur de Midoun
+          </h2>
+          <p class="text-stone-600 text-base sm:text-lg leading-relaxed">
+            Situé en face de Soquagen à Midoun, Djerba, <strong>L'Oliveraie Restaurant</strong> vous accueille dans un cadre convivial et paisible. Que ce soit pour un déjeuner entre amis, un dîner intime ou un repas en famille, nous vous proposons une cuisine généreuse combinant recettes traditionnelles tunisiennes et classiques méditerranéens.
+          </p>
+
+          <!-- Highlight Badges -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            <div class="p-4 rounded-2xl bg-white border border-stone-200 shadow-sm flex items-start gap-3">
+              <i data-lucide="utensils-crossed" class="w-6 h-6 text-olive-600 shrink-0 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-stone-900 text-sm">Spécialités Tunisiennes</h4>
+                <p class="text-xs text-stone-500 mt-1">Ojja, Tagines traditionnels, Slata Mechouia et Couscous aux saveurs locales.</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-stone-200 shadow-sm flex items-start gap-3">
+              <i data-lucide="fish" class="w-6 h-6 text-olive-600 shrink-0 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-stone-900 text-sm">Fruits de Mer & Grillades</h4>
+                <p class="text-xs text-stone-500 mt-1">Poulpe grillé, crevettes royales sautees, poissons frais du jour et viandes tendres.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Tag Pill Strip -->
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="bg-olive-100 text-olive-800 text-xs px-3 py-1 rounded-full font-medium">Sur place</span>
+            <span class="bg-olive-100 text-olive-800 text-xs px-3 py-1 rounded-full font-medium">A emporter</span>
+            <span class="bg-olive-100 text-olive-800 text-xs px-3 py-1 rounded-full font-medium">Livraison</span>
+            <span class="bg-olive-100 text-olive-800 text-xs px-3 py-1 rounded-full font-medium">Adapté aux enfants</span>
+            <span class="bg-olive-100 text-olive-800 text-xs px-3 py-1 rounded-full font-medium">Groupes & Touristes</span>
+          </div>
+        </div>
+
+        <!-- Featured Card / Rating Block -->
+        <div class="lg:col-span-5">
+          <div class="relative bg-olive-900 text-white rounded-3xl p-8 shadow-2xl overflow-hidden border border-olive-700">
+            <!-- Background Decorative Texture -->
+            <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-terracotta-600/20 rounded-full blur-2xl"></div>
+            
+            <div class="relative z-10 space-y-6">
+              <div class="flex items-center justify-between border-b border-olive-800 pb-6">
+                <div>
+                  <div class="text-amber-400 font-bold text-3xl font-serif">4.8 / 5.0</div>
+                  <div class="flex items-center gap-1 mt-1">
+                    <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-sm font-semibold text-stone-300">52+ Avis Clients</div>
+                  <div class="text-xs text-stone-400">Google Verified</div>
+                </div>
+              </div>
+
+              <!-- Customer Snippet -->
+              <blockquote class="italic text-stone-200 text-sm leading-relaxed">
+                "Un accueil exceptionnel, des plats copieux et préparés avec soin. Le poulpe et les pâtes aux crevettes sont tout simplement succulents. Incontournable à Midoun !"
+              </blockquote>
+
+              <div class="pt-4 border-t border-olive-800 flex items-center justify-between text-xs text-stone-300">
+                <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-amber-400"></i> Midoun, Djerba</span>
+                <span class="flex items-center gap-2"><i data-lucide="dollar-sign" class="w-4 h-4 text-amber-400"></i> 20–30 TND / pers.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="py-20 bg-sand/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-terracotta-600 uppercase tracking-widest text-xs font-bold">Gastronomie & Plaisir</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-olive-900 mt-2">La Carte & Nos Spécialités</h2>
+        <p class="text-stone-600 mt-4 text-sm sm:text-base">
+          Découvrez notre sélection gourmande élaborée à partir d'ingrédients frais et 100% Halal.
+        </p>
+
+        <!-- Menu Filter Buttons -->
+        <div class="flex items-center justify-center gap-2 mt-8 overflow-x-auto pb-2 no-scrollbar" id="menu-filters">
+          <button onclick="filterMenu('all')" class="menu-tab-btn active bg-olive-900 text-white px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition">
+            Tout Voir (20)
+          </button>
+          <button onclick="filterMenu('tunisian')" class="menu-tab-btn bg-white hover:bg-stone-200 text-stone-700 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-stone-300 transition">
+            Spécialités Tunisiennes
+          </button>
+          <button onclick="filterMenu('seafood')" class="menu-tab-btn bg-white hover:bg-stone-200 text-stone-700 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-stone-300 transition">
+            Poissons & Poêlées
+          </button>
+          <button onclick="filterMenu('pasta')" class="menu-tab-btn bg-white hover:bg-stone-200 text-stone-700 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-stone-300 transition">
+            Pâtes Italienne & Maison
+          </button>
+          <button onclick="filterMenu('grill')" class="menu-tab-btn bg-white hover:bg-stone-200 text-stone-700 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-stone-300 transition">
+            Grillades & Viandes
+          </button>
+        </div>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-container">
+        <!-- Rendered via JavaScript -->
+      </div>
+
+    </div>
+  </section>
+
+  <section id="gallery" class="py-20 bg-warmbg border-t border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-terracotta-600 uppercase tracking-widest text-xs font-bold">Galerie Visuelle</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-olive-900 mt-2">Les Plats de L'Oliveraie</h2>
+        </div>
+        <p class="text-stone-500 text-sm mt-3 md:mt-0 max-w-md">
+          Cliquez sur une illustration visuelle pour l'agrandir et découvrir les ingrédients détaillés de chaque spécialité.
+        </p>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="gallery-grid">
+        <!-- Dynamic Photo Tiles populated by JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <section id="services" class="py-20 bg-olive-900 text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-amber-400 uppercase tracking-widest text-xs font-bold">Services & Confort</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-amber-50 mt-2">Votre Confort est Notre Priorité</h2>
+        <p class="text-stone-300 text-sm mt-3">Tout est pensé pour faire de votre repas une expérience agréable et sans souci.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Service Card 1 -->
+        <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-400/40 transition group">
+          <div class="w-14 h-14 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center mb-6 group-hover:scale-110 transition">
+            <i data-lucide="utensils" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold font-serif text-amber-100 mb-3">Modes de Dégustation</h3>
+          <ul class="space-y-2 text-stone-300 text-sm">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Service à Table soigné</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Vente à Emporter rapide</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Livraison sur Midoun & alentours</li>
+          </ul>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-400/40 transition group">
+          <div class="w-14 h-14 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center mb-6 group-hover:scale-110 transition">
+            <i data-lucide="car" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold font-serif text-amber-100 mb-3">Stationnement Facile</h3>
+          <ul class="space-y-2 text-stone-300 text-sm">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Parking extérieur gratuit</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Nombreuses places dans la rue</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Accès rapide et sécurisé</li>
+          </ul>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-400/40 transition group">
+          <div class="w-14 h-14 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center mb-6 group-hover:scale-110 transition">
+            <i data-lucide="smile" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold font-serif text-amber-100 mb-3">Ambiance & Accueil</h3>
+          <ul class="space-y-2 text-stone-300 text-sm">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Atmosphère Cosy & Calme</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Idéal pour Familles, Groupes & Enfants</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Toilettes propres & entretenues</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="location" class="py-20 bg-warmbg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Info Panel -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-terracotta-600 uppercase tracking-widest text-xs font-bold">Localisation & Contact</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-olive-900">Où Nous Trouver ?</h2>
+          
+          <div class="space-y-4 text-sm text-stone-700">
+            <div class="flex items-start gap-3">
+              <div class="p-2 bg-olive-100 text-olive-800 rounded-lg shrink-0 mt-0.5"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+              <div>
+                <strong class="block text-stone-900">Adresse Exacte :</strong>
+                <span>RX5R+65R, en face de Soquagen, Midoun, Djerba Midun 4116, Tunisie</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="p-2 bg-olive-100 text-olive-800 rounded-lg shrink-0 mt-0.5"><i data-lucide="phone" class="w-5 h-5"></i></div>
+              <div>
+                <strong class="block text-stone-900">Téléphone / Réservations :</strong>
+                <a href="tel:+21627517646" class="text-terracotta-600 hover:underline font-semibold">+216 27 517 646</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="p-2 bg-olive-100 text-olive-800 rounded-lg shrink-0 mt-0.5"><i data-lucide="clock" class="w-5 h-5"></i></div>
+              <div>
+                <strong class="block text-stone-900">Horaires d'Ouverture :</strong>
+                <span>Lundi au Dimanche : 12:30 – 23:00 (Continu)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Buttons -->
+          <div class="pt-4 border-t border-stone-200 flex items-center gap-4">
+            <span class="text-xs text-stone-500 font-semibold">Suivez-nous :</span>
+            <a href="https://www.facebook.com/p/restaurant-LOliveraie-61589271742034/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:opacity-90 transition">
+              <i data-lucide="facebook" class="w-5 h-5"></i>
+            </a>
+            <a href="https://www.instagram.com/restaurantloliveraie1/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center hover:opacity-90 transition">
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+          </div>
+
+          <div class="pt-2">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=L%27Oliveraie+Restaurant%2C+RX5R%2B65R%2C+en+face+de+Soquagen%2C+Midoun%2C+Djerba+Midun+4116%2C+Tunisia" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 w-full bg-olive-700 hover:bg-olive-800 text-white py-3.5 px-6 rounded-xl font-medium shadow-md transition">
+              <i data-lucide="navigation-2" class="w-5 h-5"></i>
+              Ouvrir dans Google Maps (Itinéraire)
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Map Frame Preview -->
+        <div class="lg:col-span-7">
+          <div class="relative bg-stone-200 rounded-3xl overflow-hidden shadow-xl border border-stone-300 h-96 flex flex-col justify-between p-6">
+            <div class="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow border border-stone-200 max-w-sm z-10">
+              <div class="font-bold text-olive-900 font-serif">L'Oliveraie Restaurant</div>
+              <div class="text-xs text-stone-600 mt-1">Midoun - Djerba (en face de Soquagen)</div>
+              <div class="mt-2 text-[11px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded inline-block font-medium">★ 4.8 / 5 sur Google Maps</div>
+            </div>
+
+            <!-- Stylized Simulated Map Background -->
+            <div class="absolute inset-0 z-0 bg-stone-300 flex items-center justify-center">
+              <svg class="w-full h-full object-cover" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                <rect width="600" height="400" fill="#e5e3df"/>
+                <!-- Map Roads -->
+                <path d="M 0,200 Q 200,180 600,220" stroke="#ffffff" stroke-width="24" fill="none"/>
+                <path d="M 300,0 Q 320,200 280,400" stroke="#ffffff" stroke-width="18" fill="none"/>
+                <path d="M 0,200 Q 200,180 600,220" stroke="#fbd988" stroke-width="12" fill="none"/>
+                <!-- Land Blocks -->
+                <rect x="50" y="50" width="120" height="100" fill="#d9e8c6" rx="8"/>
+                <rect x="350" y="60" width="180" height="120" fill="#d9e8c6" rx="8"/>
+                <rect x="80" y="250" width="160" height="110" fill="#d9e8c6" rx="8"/>
+                <!-- Pin Marker -->
+                <g transform="translate(300, 190)">
+                  <circle cx="0" cy="0" r="16" fill="#c85a32" opacity="0.3"/>
+                  <path d="M 0,-24 C -10,-24 -18,-16 -18,-6 C -18,8 0,24 0,24 C 0,24 18,8 18,-6 C 18,-16 10,-24 0,-24 Z" fill="#c85a32"/>
+                  <circle cx="0" cy="-10" r="6" fill="#ffffff"/>
+                </g>
+              </svg>
+            </div>
+
+            <div class="relative z-10 self-end">
+              <a href="https://www.google.com/maps/dir/?api=1&destination=L%27Oliveraie+Restaurant%2C+RX5R%2B65R%2C+en+face+de+Soquagen%2C+Midoun%2C+Djerba+Midun+4116%2C+Tunisia" target="_blank" class="bg-white hover:bg-stone-50 text-stone-900 font-semibold text-xs px-4 py-2.5 rounded-xl shadow-lg border border-stone-200 flex items-center gap-2">
+                <i data-lucide="external-link" class="w-4 h-4"></i> Aggrandir le plan
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-olive-900 text-stone-400 py-12 border-t border-olive-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-amber-400 text-olive-900 flex items-center justify-center font-bold">L</div>
+        <div>
+          <div class="font-serif text-white font-bold text-sm">L'Oliveraie Restaurant Midoun</div>
+          <div>Gastronomie Tunisienne & Méditerranéenne • Djerba</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <button onclick="toggleDevModal()" class="text-stone-300 hover:text-amber-300 transition flex items-center gap-1.5 font-medium">
+          <i data-lucide="code-2" class="w-4 h-4"></i> Explorer le Code Source (L-Oliveraie/)
+        </button>
+      </div>
+
+      <div class="text-stone-500 text-center md:text-right">
+        &copy; 2026 L'Oliveraie Restaurant. Tous droits réservés.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Reservation Modal -->
+  <div id="reservation-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-warmbg rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-stone-200 relative animate-in fade-in zoom-in-95 duration-200">
+      <button onclick="closeModal('reservation-modal')" class="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 rounded-full hover:bg-stone-200">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 bg-olive-100 text-olive-800 rounded-2xl flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="calendar" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-2xl font-bold text-olive-900">Réserver une Table</h3>
+        <p class="text-stone-500 text-xs mt-1">L'Oliveraie Restaurant — Midoun, Djerba</p>
+      </div>
+
+      <form onsubmit="handleReservation(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-stone-700 uppercase mb-1">Nom Complet</label>
+          <input type="text" required placeholder="Votre nom" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:border-olive-600 bg-white">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-stone-700 uppercase mb-1">Téléphone</label>
+          <input type="tel" required placeholder="+216 -- --- ---" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:border-olive-600 bg-white">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 uppercase mb-1">Nombre de personnes</label>
+            <select class="w-full px-3 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:border-olive-600 bg-white">
+              <option>1 personne</option>
+              <option selected>2 personnes</option>
+              <option>4 personnes</option>
+              <option>6+ personnes (Groupe)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 uppercase mb-1">Heure souhaitée</label>
+            <input type="time" value="13:00" class="w-full px-3 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:border-olive-600 bg-white">
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-terracotta-600 hover:bg-terracotta-700 text-white font-semibold py-3 rounded-xl shadow-md transition mt-2 text-sm">
+          Confirmer la demande de réservation
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal for Dishes -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-warmbg rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-stone-200 relative">
+      <button onclick="closeModal('lightbox-modal')" class="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 rounded-full hover:bg-stone-200">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="lightbox-content" class="space-y-4">
+        <!-- Filled dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Developer Source Code Viewer Modal (Folder structure: L-Oliveraie/) -->
+  <div id="dev-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden items-center justify-center p-4 sm:p-6">
+    <div class="bg-stone-900 text-stone-200 rounded-3xl max-w-4xl w-full h-[80vh] flex flex-col shadow-2xl border border-stone-700 overflow-hidden">
+      
+      <!-- Top File Header -->
+      <div class="bg-stone-950 px-6 py-4 border-b border-stone-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <i data-lucide="folder" class="w-5 h-5 text-amber-400"></i>
+          <span class="font-mono text-sm font-bold text-stone-100">Dossier du Projet : L-Oliveraie/</span>
+        </div>
+        <button onclick="toggleDevModal()" class="text-stone-400 hover:text-white p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- File Switcher Tabs -->
+      <div class="flex border-b border-stone-800 bg-stone-900 text-xs font-mono">
+        <button onclick="switchCodeTab('html')" id="tab-html" class="px-5 py-3 border-b-2 border-amber-400 text-amber-300 font-bold">index.html</button>
+        <button onclick="switchCodeTab('css')" id="tab-css" class="px-5 py-3 text-stone-400 hover:text-stone-200">style.css</button>
+        <button onclick="switchCodeTab('js')" id="tab-js" class="px-5 py-3 text-stone-400 hover:text-stone-200">script.js</button>
+      </div>
+
+      <!-- Code Box Viewer -->
+      <div class="flex-1 p-6 overflow-y-auto font-mono text-xs text-emerald-400 bg-stone-950">
+        <pre id="code-display" class="whitespace-pre-wrap leading-relaxed"></pre>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="bg-stone-950 px-6 py-3 border-t border-stone-800 flex items-center justify-between text-xs text-stone-400">
+        <span>Arborescence prêt pour hébergement Web / Vercel / Netlify</span>
+        <button onclick="copyCurrentCode()" class="bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold px-4 py-1.5 rounded-lg flex items-center gap-1.5 transition">
+          <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copier le Fichier
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
